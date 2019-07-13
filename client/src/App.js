@@ -1,23 +1,19 @@
-import React from 'react'
-import './App.css'
+import React from 'react';
+import Home from  './pages/Home'
+import Hero from  './pages/Hero'
+import './App.css';
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
-class App extends React.Component {
-  state = { serverMessage: '' }
 
-  componentDidMount(){
-    fetch('/api/demo')
-      .then(response => response.json())
-      .then(data => this.setState({ serverMessage: data.message }))
-  }
-
-  render(){
-    return (
-      <div id="demo">
-        <h1>Hello from client/src/App.js</h1>
-        <h1>{this.state.serverMessage}</h1>
-      </div>
-    )
-  }
+function App() {
+  return (
+    <BrowserRouter>
+      <Switch>
+        <Route exact path='/' component={Home}/>
+        <Route path='/hero/:id' component={Hero}/>
+      </Switch>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
