@@ -3,6 +3,7 @@ import axios from 'axios'
 import encode from 'encodeurl'
 import { Link } from 'react-router-dom'
 import '../index.css'
+import { debounce } from '../utils';
 
 
 const getRandomIndex = () => Math.floor(Math.random() * Math.floor(700))
@@ -21,8 +22,14 @@ class Heroes extends React.Component {
     this.getRandomHeroes()
   }
 
+  debouncedFetch = debounce(() => {
+    console.log('calling this')
+    let url = encode(`/superhero/${this.state.findHero.toLowerCase()}`)
+    axios.get(url)
+    .then(response => response && this.setState({ superHeros: response.data }))
+  }, 2000)
+
   handleChange = (event) => {
-    event.preventDefault()
     if (this.state.findHero.includes('spider ')) {
       this.state.findHero.split(' ').join('-')
     }else if (this.state.findHero ==='') {
@@ -30,11 +37,7 @@ class Heroes extends React.Component {
     }else {
       this.state.findHero.split(' ').join('%20')
     }
-
-    this.setState({findHero: event.target.value})
-    let url = encode(`/superhero/${this.state.findHero.toLowerCase()}`)
-    axios.get(url)
-    .then(response => response && this.setState({ superHeros: response.data }))
+    this.setState({findHero: event.target.value}, () => this.debouncedFetch())
 }
     getRandomHeroes = async () => {
       const requests = []
@@ -45,14 +48,13 @@ class Heroes extends React.Component {
     }
 
     render(){
+      console.log('super heroes', this.state.superHeros, this.state.superHeros.length);
       return(
         <div className="homePage">
           <h1>Hero Data Base</h1>
             <input type="search" value={this.state.findHero} onChange={this.handleChange}  />
-
             <div>
-              {this.state.superHeros ?  <h1>{this.state.errorMessage}</h1>
-                : this.state.superHeros.map( (hero, index) => {
+              {this.state.superHeros ? this.state.superHeros.map( (hero, index) => {
                   return (
 
                     <Link key={hero.id} to={`/hero/${hero.id}`}>
@@ -63,6 +65,7 @@ class Heroes extends React.Component {
                     </Link>
                   )
                 })
+                : <h1>{this.state.errorMessage}</h1>
               }
               </div>
               <hr></hr>
