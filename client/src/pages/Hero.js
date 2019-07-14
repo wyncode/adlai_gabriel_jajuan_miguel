@@ -3,19 +3,20 @@ import axios from 'axios'
 import '../index.css'
 
 class Hero extends React.Component {
-  state = { hero: {} }
+  state = { hero: {},
+            loading: false,
+        }
 
   componentDidMount(){
-    console.log("I'm Working");
+    this.setState({loading: true})
     axios.get(`${this.props.match.params.id}`)
-      .then(response => this.setState({ hero :response.data}))
-      console.log("We've got data",this.state.hero);
+      .then(response => this.setState({ hero :response.data, loading: false}))
   }
 
   render(){
     const { hero } = this.state
-    console.log(hero)
     return(
+      this.state.loading ? <h1>Loading</h1> :
       <div className="heroCard">
       <h1>{ hero.biography && hero.biography.publisher}</h1>
       {

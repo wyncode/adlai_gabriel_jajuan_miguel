@@ -1,5 +1,7 @@
 body {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
@@ -22,4 +24,25 @@ code {
 
 .powerLevels {
 
+}
+.homePage {
+  background-color: black;
+  height: 100vh;
+}
+
+.searchPics {
+  height: 100px;
+  width: 150px;
+}
+
+.featuredPics {
+  display: grid;
+  place-items: center;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  height: 600px;
+}
+
+.featuredPic {
+  height: 300px;
 }
