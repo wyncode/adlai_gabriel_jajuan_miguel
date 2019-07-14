@@ -42,6 +42,12 @@ code {
   grid-template-columns: 1fr 1fr 1fr;
   height: 600px;
 }
+.searchResults {
+  display: grid;
+  place-items: center;
+  grid-template-rows: 1fr;
+  height: 600px;
+}
 
 .featuredPic {
   height: 300px;
