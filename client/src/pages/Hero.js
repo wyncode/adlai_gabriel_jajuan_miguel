@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import '../index.css'
+import { Bar } from 'react-chartjs-2'
 
 class Hero extends React.Component {
   state = {
@@ -15,8 +16,16 @@ class Hero extends React.Component {
 
   render(){
     const { hero, loading } = this.state
+    console.log(hero)
     let aliases = []
     if (hero.biography) aliases = hero.biography.aliases.filter(alias => alias !== "-")
+    let powerstats = {}
+    let chartData = {labels: [], datasets: [{}]}
+    if (hero.powerstats) {
+      let labels = Object.keys(hero.powerstats).filter(key => !Array.isArray(hero.powerstats[key]))
+      chartData.labels = labels
+      chartData.datasets[0].data = labels.map(label => Number(hero.powerstats[label]))
+    }
     return(
       loading ? <h1>Loading</h1> :
       <div className="heroCard">
@@ -51,6 +60,8 @@ class Hero extends React.Component {
           <div>Speed: {hero.powerstats && hero.powerstats.speed}</div>
           <div>Strength: {hero.powerstats && hero.powerstats.strength}</div>
         </div>
+
+        <Bar data={chartData}/>
       </div>
     )
   }
