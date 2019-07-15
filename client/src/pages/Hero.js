@@ -3,20 +3,22 @@ import axios from 'axios'
 import '../index.css'
 
 class Hero extends React.Component {
-  state = { hero: {},
-            loading: false,
-        }
+  state = {
+    hero: {},
+    loading: true,
+  }
 
   componentDidMount(){
-    this.setState({loading: true})
-    axios.get(`${this.props.match.params.id}`)
+    axios.get(`/hero/${this.props.match.params.id}`)
       .then(response => this.setState({ hero :response.data, loading: false}))
   }
 
   render(){
-    const { hero } = this.state
+    const { hero, loading } = this.state
+    let aliases = []
+    if (hero.biography) aliases = hero.biography.aliases.filter(alias => alias !== "-")
     return(
-      this.state.loading ? <h1>Loading</h1> :
+      loading ? <h1>Loading</h1> :
       <div className="heroCard">
       <h1>{ hero.biography && hero.biography.publisher}</h1>
       {
@@ -32,21 +34,22 @@ class Hero extends React.Component {
           <div>{hero.name}</div>
           <div>{hero.biography && hero.biography["full-name"]}</div>
           <div>Born: {hero.biography && hero.biography["place-of-birth"]}</div>
-          <h1>Alias</h1>
-            { hero.biography && hero.biography.aliases.map((alias, index) => alias === ["-"] ? null : <div key={index}>{alias}</div> )
-            }
+          {
+            aliases.length && <h1>Alias</h1>
+          }
+          { aliases.map(alias => <div key={alias}>{alias}</div>) }
         </div>
         {
           //*************************Power Levels ARE HERE*******************************************************
         }
         <h1>Power Levels</h1>
         <div className="powerLevels">
-          <div>Combat: {this.state.hero.powerstats && this.state.hero.powerstats.combat}</div>
-          <div>Durability: {this.state.hero.powerstats && this.state.hero.powerstats.durability}</div>
-          <div>Intelligence: {this.state.hero.powerstats && this.state.hero.powerstats.intelligence}</div>
-          <div>Power: {this.state.hero.powerstats && this.state.hero.powerstats.power}</div>
-          <div>Speed: {this.state.hero.powerstats && this.state.hero.powerstats.speed}</div>
-          <div>Strength: {this.state.hero.powerstats && this.state.hero.powerstats.strength}</div>
+          <div>Combat: {hero.powerstats && hero.powerstats.combat}</div>
+          <div>Durability: {hero.powerstats && hero.powerstats.durability}</div>
+          <div>Intelligence: {hero.powerstats && hero.powerstats.intelligence}</div>
+          <div>Power: {hero.powerstats && hero.powerstats.power}</div>
+          <div>Speed: {hero.powerstats && hero.powerstats.speed}</div>
+          <div>Strength: {hero.powerstats && hero.powerstats.strength}</div>
         </div>
       </div>
     )
