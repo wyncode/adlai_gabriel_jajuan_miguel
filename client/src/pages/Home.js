@@ -51,8 +51,11 @@ class Heroes extends React.Component {
       console.log('super heroes', this.state.superHeros, this.state.superHeros.length);
       return(
         <div className="homePage">
-          <h1>Hero Data Base</h1>
+          <h1 id="hometitle">Hero Data Base</h1>
+          <div className="container">
             <input type="search" value={this.state.findHero} onChange={this.handleChange}  />
+            <div className="search"></div>
+          </div>
             <div>
               {this.state.superHeros ? this.state.superHeros.map( (hero, index) => {
                   return (
@@ -68,7 +71,6 @@ class Heroes extends React.Component {
                 : <h1>{this.state.errorMessage}</h1>
               }
               </div>
-              <hr></hr>
               <div className="featuredPics">
              
               {
