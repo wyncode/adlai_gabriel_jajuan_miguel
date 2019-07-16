@@ -6,7 +6,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #151515;
-  color: lightgray;
 }
 
 code {
@@ -52,7 +51,6 @@ code {
   height: 300px;
 }
 
-<<<<<<< HEAD
 /* __________________________Card styles__________________________  */
 
 .profile-card {
@@ -394,16 +392,14 @@ code {
 
 .powers{
   text-align: center;
-=======
+}
+
 #hometitle{
   font-family: 'Libre Barcode 128 Text', sans-serif;
   font-size: 6rem;
   font-weight: 100;
   text-align: center;
   color: #DC143C;
-}
-
-h1 {
   position: relative;
   background: linear-gradient(to right, #990254, #DC143C, #990254);
   -webkit-background-clip: text;
@@ -530,5 +526,4 @@ a:link {
   color: white;
   opacity: 0.5;
   font-weight: bolder;
->>>>>>> added some css styling mostly search bar
 }
