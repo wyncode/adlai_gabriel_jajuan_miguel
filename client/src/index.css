@@ -24,31 +24,42 @@ code {
 .powerLevels {
 
 }
-/* .homePage {
-  height: 100vh;
-}  */
 
 .searchPics {
-  height: 100px;
+  height: 200px;
   width: 150px;
+  border-radius: 10%;
+  margin: 10px;
+  box-shadow: 0 0 10px 0 #B0094B;
 }
 
 .featuredPics {
-  display: flex;
+  display: grid;
+  text-align: center;
+  margin: 0 auto;
   place-items: center;
   grid-template-rows: 1fr;
   grid-template-columns: 1fr 1fr 1fr;
   height: 600px;
 }
+
+.featuredPic {
+  border-radius: 10%;
+  height: 300px;
+  margin: 10px;
+  box-shadow: 0 0 10px 0 #B0094B;
+}
+
+.featuredContainer h1{
+  color: crimson;
+  margin: 10px;
+}
+
 .searchResults {
   display: grid;
   place-items: center;
   grid-template-rows: 1fr;
   height: 600px;
-}
-
-.featuredPic {
-  height: 300px;
 }
 
 /* __________________________Card styles__________________________  */
@@ -401,7 +412,7 @@ code {
   text-align: center;
   color: #DC143C;
   position: relative;
-  background: linear-gradient(to right, #990254, #DC143C, #990254);
+  background: linear-gradient(to right, #990254, #DC143C, #990254, aqua);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -409,7 +420,10 @@ code {
 a:link {
     text-decoration: none;
 }
-
+.container2 {
+  display: grid;
+  place-items: center;
+}
 /* SEARCH BAR (still working on getting the search icon to show without clicking it. Not sure why it disappeared.) */
 @import url('https://fonts.googleapis.com/css?family=Inconsolata:700');
 .container {
@@ -422,6 +436,7 @@ a:link {
   width: 300px;
   height: 100px;
 }
+
 
 .container .search {
   position: absolute;
@@ -526,4 +541,25 @@ a:link {
   color: white;
   opacity: 0.5;
   font-weight: bolder;
+}
+
+.disappear {
+  visibility: hidden;
+}
+
+.searchContainer {
+  width: 60%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr) ) ;
+}
+
+.wrapper {
+  display: grid;
+  place-items: center;
+  margin-top: 60px;
+}
+
+.wrapper h1{
+  color: crimson;
+  margin: 10px;
 }
