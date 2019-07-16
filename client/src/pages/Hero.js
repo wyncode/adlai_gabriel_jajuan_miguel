@@ -20,36 +20,45 @@ class Hero extends React.Component {
     return(
       loading ? <h1>Loading</h1> :
       <div className="heroCard">
-      <h1>{ hero.biography && hero.biography.publisher}</h1>
-      {
-        //**************************IMAGE IS HERE*************************************************************
-      }
-          <img height="200px" alt={hero.name} src={ hero.image && hero.image.url }></img>
-
-          {
-            //**********************Hero Info IS HERE****************************************************
-          }
-          <h1>Hero Info</h1>
-        <div className="heroInfo">
-          <div>{hero.name}</div>
-          <div>{hero.biography && hero.biography["full-name"]}</div>
-          <div>Born: {hero.biography && hero.biography["place-of-birth"]}</div>
-          {
-            aliases.length && <h1>Alias</h1>
-          }
-          { aliases.map(alias => <div key={alias}>{alias}</div>) }
-        </div>
-        {
-          //*************************Power Levels ARE HERE*******************************************************
-        }
-        <h1>Power Levels</h1>
-        <div className="powerLevels">
-          <div>Combat: {hero.powerstats && hero.powerstats.combat}</div>
-          <div>Durability: {hero.powerstats && hero.powerstats.durability}</div>
-          <div>Intelligence: {hero.powerstats && hero.powerstats.intelligence}</div>
-          <div>Power: {hero.powerstats && hero.powerstats.power}</div>
-          <div>Speed: {hero.powerstats && hero.powerstats.speed}</div>
-          <div>Strength: {hero.powerstats && hero.powerstats.strength}</div>
+        <div className="background2">
+          <div className="profile-card">
+            <img height="350px" width= "100%" alt={hero.name} src={ hero.image && hero.image.url }></img>
+            <div className="profile-bio">
+              <h1>Hero Info</h1>
+              <h3>↓</h3>
+              <div>
+                <h3>Name:</h3>
+                {hero.name}
+              </div>
+              <div>
+                <h3>Publisher:</h3>
+                {hero.biography && hero.biography.publisher}
+              </div>
+              <div>
+                <h3>Full Name</h3>
+                {hero.biography && hero.biography["full-name"]}
+              </div>
+              <div>
+                <h3>Born:</h3>
+                {hero.biography && hero.biography["place-of-birth"]}
+              </div>
+              <div>
+                { aliases.length && <h3>Alias:</h3> }
+                { hero.biography && hero.biography.aliases.map(alias => <div key={alias}>{alias}</div> ) }
+              </div>
+            </div>
+          </div>
+          <div className="powers">
+            <h1>Power Levels</h1>
+            <div className="powerLevels">
+              <div>Combat: {hero.powerstats && hero.powerstats.combat}</div>
+              <div>Durability: {hero.powerstats && hero.powerstats.durability}</div>
+              <div>Intelligence: {hero.powerstats && hero.powerstats.intelligence}</div>
+              <div>Power: {hero.powerstats && hero.powerstats.power}</div>
+              <div>Speed: {hero.powerstats && hero.powerstats.speed}</div>
+              <div>Strength: {hero.powerstats && hero.powerstats.strength}</div>
+            </div>
+          </div>
         </div>
       </div>
     )

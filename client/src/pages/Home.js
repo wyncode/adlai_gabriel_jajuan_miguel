@@ -70,7 +70,7 @@ class Heroes extends React.Component {
               </div>
               <hr></hr>
               <div className="featuredPics">
-              <h1>Featured</h1>
+             
               {
                 !!this.state.randomHeros.length && this.state.randomHeros.map( (hero, index) => {
                   return (
