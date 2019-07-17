@@ -85,7 +85,7 @@ class Heroes extends React.Component {
                   <Link key={hero.id} to={`/hero/${hero.id}`}>
                     <div className="featuredContainer">
                       <h1>{hero.name}</h1>
-                        <img className="featuredPic" src={hero.image && hero.image.url} alt={hero.name}></img>
+                      <img className="featuredPic" src={hero.image && hero.image.url} alt={hero.name}></img>
                     </div>
                   </Link>
                 )
