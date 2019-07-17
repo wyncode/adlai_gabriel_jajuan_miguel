@@ -24,10 +24,12 @@ class Hero extends React.Component {
     )
   }
 
-  setStorage = (hero) => {
-      let retrievedHeros = JSON.parse(localStorage.getItem("hero")) || []
-      retrievedHeros.push(hero)
-      localStorage.setItem('hero', JSON.stringify(retrievedHeros) )
+  setStorage = newHero => {
+      const retrievedHeros = JSON.parse(localStorage.getItem("hero")) || []
+      const newHeroesList = retrievedHeros.some(hero => hero.id === newHero.id)
+      ? retrievedHeros
+      : [...retrievedHeros, newHero]
+      localStorage.setItem('hero', JSON.stringify(newHeroesList) )
   }
 
   render(){
