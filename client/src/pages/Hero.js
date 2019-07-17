@@ -14,18 +14,20 @@ class Hero extends React.Component {
   componentDidMount(){
 
     axios.get(`/hero/${this.props.match.params.id}`)
-      .then(response => this.setState({ hero :response.data,
-                                        loading: false,
-                                        selectedHeroes: response.data }
-                                        , () => this.setStorage() )
+      .then(response => {
+        this.setStorage(response.data)
+        this.setState({
+          hero: response.data,
+          loading: false,
+        })
+      }
     )
   }
 
-  setStorage = () => {
-      localStorage.setItem('hero', this.state.selectedHeroes )
-      let hero = localStorage.getItem('hero')
-      localStorage.setItem("hero", JSON.stringify(this.state.selectedHeroes))
-      console.log(hero);
+  setStorage = (hero) => {
+      let retrievedHeros = JSON.parse(localStorage.getItem("hero")) || []
+      retrievedHeros.push(hero)
+      localStorage.setItem('hero', JSON.stringify(retrievedHeros) )
   }
 
   render(){
