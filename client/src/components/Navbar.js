@@ -5,7 +5,6 @@ import '../index.css'
 
 const Navbar = () => (
   <>
-  
     <nav>
       <ul>
         <li><NavLink exact to="/">Home</NavLink></li>
