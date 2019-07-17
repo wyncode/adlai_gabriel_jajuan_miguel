@@ -33,21 +33,6 @@ body {
   overflow: hidden;
 }
 
-<<<<<<< HEAD
-.heroCard {
-
-}
-
-.heroInfo {
-
-}
-
-.powerLevels {
-
-}
-
-=======
->>>>>>> done work
 .searchPics {
   height: 200px;
   width: 150px;
@@ -87,7 +72,6 @@ body {
   transform: scale(1.1);
 }
 
-<<<<<<< HEAD
 .featuredContainer h1{
   color: dimgray;
   margin: 10px;
@@ -141,9 +125,6 @@ body {
 }
 
 /* -----------------------------Gradient ends------------------------------- */
-=======
-
->>>>>>> done work
 /* __________________________Card styles__________________________  */
 
 
@@ -177,8 +158,6 @@ body {
   background-image: url("background1.jpg");
   background-color: #252525;
   height: 100vh;
-  
-
 }
 
 /* _______________Beginning Card Syle Animation_______________  */
@@ -626,7 +605,6 @@ a:link {
   opacity: 0.5;
   font-weight: bolder;
 }
-<<<<<<< HEAD
 
 .disappear {
   visibility: hidden;
@@ -692,7 +670,6 @@ a:link {
 
   }
 }
-=======
 /* ______________________________End Search bar section___________________________________ */
 
 /* ______________________________Beginning Power Level section___________________________________ */
@@ -808,4 +785,3 @@ a:link {
 
 
 }
->>>>>>> done work

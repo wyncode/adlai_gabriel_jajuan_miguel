@@ -21,10 +21,6 @@ class Hero extends React.Component {
     return(
       loading ? <div className="spinnerHolder" ><div class="lds-hourglass"></div></div> :
       <div className="heroCard">
-
-
-{/* __________________________Beginning Card Detail Info______________________ */}
-
         <div className="background2">
           <div className="profile-card">
             <img height="350px" width= "100%" alt={hero.name} src={ hero.image && hero.image.url }></img>
@@ -51,62 +47,40 @@ class Hero extends React.Component {
                 { aliases.length && <h3>Alias:</h3> }
                 { hero.biography && hero.biography.aliases.map(alias => <div key={alias}>{alias}</div> ) }
               </div>
-             </div>
-           </div>
-         </div>
-{/* __________________________End Card Detail Info______________________ */}
-
-{/* ______________________________Beginning Power Level section___________________________________ */}
-
-<div className="powers" style={{backgroundImage: `url(${background})`}}>
-<div className="big-box">
-
-    <div className="tittle">
-          
-        <h1>{hero.name} <br></br>Power Levels</h1>
-      </div>
-
-        <div className="powerLevels">   
-          <div className="left">
-            <div> <h2>Combat: {hero.powerstats && hero.powerstats.combat}</h2></div>
-            <div><h2>Durability: {hero.powerstats && hero.powerstats.durability}</h2></div>
-            <div><h2>Intelligence: {hero.powerstats && hero.powerstats.intelligence}</h2></div>
+            </div>
           </div>
-          <div className="right">
-            <div><h2>Power: {hero.powerstats && hero.powerstats.power}</h2></div>
-            <div><h2>Speed: {hero.powerstats && hero.powerstats.speed}</h2></div>
-            <div><h2>Strength: {hero.powerstats && hero.powerstats.strength}</h2></div>
+        </div>
+        <div className="powers" style={{backgroundImage: `url(${background})`}}>
+          <div className="big-box">
+            <div className="tittle">
+              <h1>{hero.name} <br></br>Power Levels</h1>
+            </div>
+            <div className="powerLevels">
+              <div className="left">
+                <div> <h2>Combat: {hero.powerstats && hero.powerstats.combat}</h2></div>
+                <div><h2>Durability: {hero.powerstats && hero.powerstats.durability}</h2></div>
+                <div><h2>Intelligence: {hero.powerstats && hero.powerstats.intelligence}</h2></div>
+              </div>
+              <div className="right">
+                <div><h2>Power: {hero.powerstats && hero.powerstats.power}</h2></div>
+                <div><h2>Speed: {hero.powerstats && hero.powerstats.speed}</h2></div>
+                <div><h2>Strength: {hero.powerstats && hero.powerstats.strength}</h2></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="txs0" >
+          <div className="txs1">
+            <h1 className="txstittle">Thank you!</h1>
+          </div>
+          <div className="txs2">
+            <div className="gifright"></div>
+          </div>
+          <div className="txs3">
+            <h3 className="txstittle">Work created with love, passion, tears and many hours on google.</h3><br></br><h3>From Group 2: Adlai, Gabriel, Jajuan, Miguel.</h3>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-
-<div className="txs0" >
-
-    <div className="txs1">
-      <h1 className="txstittle">Thank you!</h1>
-    </div>
-
-    <div className="txs2">
-      <div className="gifright"> </div>
-    </div>
-
-    <div className="txs3">
-      <h3 className="txstittle">Work created with love, passion, tears and many hours on google.</h3> <br></br> <h3>From Group 2: Adlai, Gabriel, Jajuan, Miguel.</h3>
-    </div>
-
-</div>
-
-
-</div>
-
-//  ______________________________End Power Level section___________________________________
-
-// _____________________________Beginning Thank you section_____________________________
-
-
-
-
     )
   }
 }
