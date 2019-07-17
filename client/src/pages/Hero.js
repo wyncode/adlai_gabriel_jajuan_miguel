@@ -18,7 +18,7 @@ class Hero extends React.Component {
     let aliases = []
     if (hero.biography) aliases = hero.biography.aliases.filter(alias => alias !== "-")
     return(
-      loading ? <h1>Loading</h1> :
+      loading ? <div className="spinnerHolder" ><div class="lds-hourglass"></div></div> :
       <div className="heroCard">
         <div className="background2">
           <div className="profile-card">

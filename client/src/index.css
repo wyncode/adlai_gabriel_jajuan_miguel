@@ -527,3 +527,46 @@ a:link {
   opacity: 0.5;
   font-weight: bolder;
 }
+
+/* CSS Spinnner Loader */
+
+.spinnerHolder {
+  height: 100vh;
+  width: 100%;
+}
+
+.lds-hourglass {
+  display: grid;
+  place-items: center;
+  width: 64%;
+  height: 64%;
+  margin: auto;
+}
+.lds-hourglass:after {
+  content: " ";
+  border-radius: 50%;
+  width: 0;
+  height: 0;
+  margin: 6px;
+  box-sizing: border-box;
+  border: 26px solid #fff;
+  border-color: #9E0453 #DB143D #9E0453  #DB143D;
+  animation-name: lds-hourglass;
+  animation-duration: 1.2s, 1.2s;
+  animation-iteration-count: infinite, infinite;
+
+}
+@keyframes lds-hourglass {
+  0% {
+    transform: rotate(0) scale(1.0);
+    animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  }
+  50% {
+    transform: rotate(900deg) scale(40.0) ;
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  100% {
+    transform: rotate(1800deg) scale(1.0);
+
+  }
+}
