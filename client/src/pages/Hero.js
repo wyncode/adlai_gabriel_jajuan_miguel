@@ -14,6 +14,7 @@ class Hero extends React.Component {
   }
 
   render(){
+    let background = 'https://wallpapercave.com/wp/wp2757832.gif'
     const { hero, loading } = this.state
     let aliases = []
     if (hero.biography) aliases = hero.biography.aliases.filter(alias => alias !== "-")
@@ -48,16 +49,35 @@ class Hero extends React.Component {
               </div>
             </div>
           </div>
-          <div className="powers">
-            <h1>Power Levels</h1>
-            <div className="powerLevels">
-              <div>Combat: {hero.powerstats && hero.powerstats.combat}</div>
-              <div>Durability: {hero.powerstats && hero.powerstats.durability}</div>
-              <div>Intelligence: {hero.powerstats && hero.powerstats.intelligence}</div>
-              <div>Power: {hero.powerstats && hero.powerstats.power}</div>
-              <div>Speed: {hero.powerstats && hero.powerstats.speed}</div>
-              <div>Strength: {hero.powerstats && hero.powerstats.strength}</div>
+        </div>
+        <div className="powers" style={{backgroundImage: `url(${background})`}}>
+          <div className="big-box">
+            <div className="tittle">
+              <h1>{hero.name} <br></br>Power Levels</h1>
             </div>
+            <div className="powerLevels">
+              <div className="left">
+                <div> <h2>Combat: {hero.powerstats && hero.powerstats.combat}</h2></div>
+                <div><h2>Durability: {hero.powerstats && hero.powerstats.durability}</h2></div>
+                <div><h2>Intelligence: {hero.powerstats && hero.powerstats.intelligence}</h2></div>
+              </div>
+              <div className="right">
+                <div><h2>Power: {hero.powerstats && hero.powerstats.power}</h2></div>
+                <div><h2>Speed: {hero.powerstats && hero.powerstats.speed}</h2></div>
+                <div><h2>Strength: {hero.powerstats && hero.powerstats.strength}</h2></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="txs0" >
+          <div className="txs1">
+            <h1 className="txstittle">Thank you!</h1>
+          </div>
+          <div className="txs2">
+            <div className="gifright"></div>
+          </div>
+          <div className="txs3">
+            <h3 className="txstittle">Work created with love, passion, tears and many hours on google.</h3><br></br><h3>From Group 2: Adlai, Gabriel, Jajuan, Miguel.</h3>
           </div>
         </div>
       </div>
