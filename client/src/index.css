@@ -30,7 +30,7 @@ code {
   width: 150px;
   border-radius: 10%;
   margin: 10px;
-  box-shadow: 0 0 4px 0 #lightgray;
+  box-shadow: 0 0 4px 0 lightgray;
 }
 
 .searchResults {
@@ -48,7 +48,6 @@ code {
   grid-template-rows: 1fr;
   grid-template-columns: 1fr 1fr 1fr;
   height: 400px;
-  padding: 80;
   border: .5px solid darkgray;
   background-color: lightgray;
 }
@@ -435,17 +434,15 @@ a:link {
 }
 /* SEARCH BAR (still working on getting the search icon to show without clicking it. Not sure why it disappeared.) */
 @import url('https://fonts.googleapis.com/css?family=Inconsolata:700');
+
 .container {
-  position: absolute;
-  margin: auto;
+  position: fixed;
   top: 0;
-  left: 0;
-  right: 0;
+  right: 20px;
   bottom: 0;
   width: 300px;
   height: 100px;
 }
-
 
 .container .search {
   position: absolute;
@@ -502,7 +499,6 @@ a:link {
   right: 0;
   bottom: 0;
   left: 0;
-  width: 50px;
   height: 50px;
   outline: none;
   border: none;
@@ -522,7 +518,7 @@ a:link {
   cursor: pointer;
 }
 .container input:focus {
-  width: 300px;
+  width: 200px;
   opacity: 1;
   cursor: text;
 }
@@ -559,17 +555,13 @@ a:link {
 .searchContainer {
   width: 60%;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr) ) ;
-  padding: 80;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr) ) ;
 }
 
 .wrapper {
   display: grid;
   text-align: center;
   place-items: center;
-  padding: 40px;
-  margin-top: 80px;
-  margin-left: 15px;
   background-color: lightgray;
 }
 
