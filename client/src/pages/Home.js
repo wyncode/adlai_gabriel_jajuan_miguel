@@ -17,6 +17,7 @@ class Heroes extends React.Component {
     findHero: '',
     errorMessage: 'That hero does not exist try again!',
     loading: true,
+    searchFeatureDisappear: false,
   }
   componentDidMount(){
     this.getRandomHeroes()
@@ -24,10 +25,15 @@ class Heroes extends React.Component {
 
   debouncedFetch = debounce(() => {
     console.log('calling this')
+    this.handleFeature()
     let url = encode(`/superhero/${this.state.findHero.toLowerCase()}`)
     axios.get(url)
     .then(response => response && this.setState({ superHeros: response.data }))
-  }, 2000)
+  }, 500)
+
+  handleFeature = event => {
+    this.setState({searchFeatureDisappear: true})
+  }
 
   handleChange = (event) => {
     if (this.state.findHero.includes('spider ')) {
@@ -38,58 +44,65 @@ class Heroes extends React.Component {
       this.state.findHero.split(' ').join('%20')
     }
     this.setState({findHero: event.target.value}, () => this.debouncedFetch())
-}
-    getRandomHeroes = async () => {
-      const requests = []
-      for (let i = 0; i < 3; i++) requests.push(axios.get(getRandomHeroUrl()))
-      const responses = await Promise.all(requests)
-      const randomHeros = responses.map(response => response.data)
-      this.setState({ randomHeros })
-    }
+  }
 
-    render(){
-      console.log('super heroes', this.state.superHeros, this.state.superHeros.length);
-      return(
+  getRandomHeroes = async () => {
+    const requests = []
+    for (let i = 0; i < 3; i++) requests.push(axios.get(getRandomHeroUrl()))
+    const responses = await Promise.all(requests)
+    const randomHeros = responses.map(response => response.data)
+    this.setState({ randomHeros })
+  }
+
+  render(){
+    console.log('super heroes', this.state.superHeros, this.state.superHeros.length);
+    return(
+      <div className="top">
         <div className="homePage">
-          <h1 id="hometitle">Hero Data Base</h1>
-          <div className="container">
-            <input type="search" value={this.state.findHero} onChange={this.handleChange}  />
-            <div className="search"></div>
+          <div className="container2">
+            <div><h1 id="hometitle">Hero Data Base</h1></div>
           </div>
-            <div>
-              {this.state.superHeros ? this.state.superHeros.map( (hero, index) => {
+          <div className="wrapper">
+            <div className="searchContainer">
+              {
+                this.state.superHeros.map( (hero, index) => {
                   return (
-
                     <Link key={hero.id} to={`/hero/${hero.id}`}>
-                      <div >
+                      <div>
                         <h1>{hero.name}</h1>
                         <img className='searchPics' height="100px" src={hero.image.url} alt={hero.name}></img>
                       </div>
                     </Link>
                   )
                 })
-                : <h1>{this.state.errorMessage}</h1>
               }
-              </div>
-              <div className="featuredPics ">
-
-              {
-                !!this.state.randomHeros.length && this.state.randomHeros.map( (hero, index) => {
-                  return (
-
-                    <Link key={hero.id} to={`/hero/${hero.id}`}>
-                      <div >
-                        <h1>{hero.name}</h1>
-                        <img className="featuredPic" src={hero.image && hero.image.url} alt={hero.name}></img>
-                      </div>
-                    </Link>
-                  )
-                })
-              }
-              </div>
-
+            </div>
+          </div>
+          <div className={this.state.searchFeatureDisappear ? "disappear" : "featuredPics"}>
+            {
+              this.state.randomHeros.map( (hero, index) => {
+                return (
+                  <Link key={hero.id} to={`/hero/${hero.id}`}>
+                    <div className="featuredContainer">
+                      <h1>{hero.name}</h1>
+                      <img className="featuredPic" src={hero.image && hero.image.url} alt={hero.name}></img>
+                    </div>
+                  </Link>
+                )
+              })
+            }
+          </div>
         </div>
-
+        <div className="container">
+          <input
+            type="text"
+            value={this.state.findHero}
+            onChange={this.handleChange}
+            autoComplete="off"
+          />
+          <div className="search"></div>
+        </div>
+      </div>
     )
   }
 }
