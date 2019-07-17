@@ -30,36 +30,45 @@ code {
   width: 150px;
   border-radius: 10%;
   margin: 10px;
-  box-shadow: 0 0 10px 0 #B0094B;
-}
-
-.featuredPics {
-  display: grid;
-  text-align: center;
-  margin: 0 auto;
-  place-items: center;
-  grid-template-rows: 1fr;
-  grid-template-columns: 1fr 1fr 1fr;
-  height: 600px;
-}
-
-.featuredPic {
-  border-radius: 10%;
-  height: 300px;
-  margin: 10px;
-  box-shadow: 0 0 10px 0 #B0094B;
-}
-
-.featuredContainer h1{
-  color: crimson;
-  margin: 10px;
+  box-shadow: 0 0 4px 0 #lightgray;
 }
 
 .searchResults {
   display: grid;
   place-items: center;
   grid-template-rows: 1fr;
-  height: 600px;
+}
+
+.featuredPics {
+  display: grid;
+  text-align: center;
+  text-shadow: 0 0 6px lightgray;
+  margin: 0 auto;
+  place-items: center;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  height: 400px;
+  padding: 80;
+  border: .5px solid darkgray;
+  background-color: lightgray;
+}
+
+.featuredPic {
+  border-radius: 10%;
+  height: 300px;
+  margin: 10px;
+  box-shadow: 0 0 6px 0 darkgray;
+  transition: all .2s ease-in-out;
+}
+
+.featuredPic:hover {
+  transform: scale(1.1);
+}
+
+.featuredContainer h1{
+  color: dimgray;
+  margin: 10px;
+  font-family: 'Inconsolata', monospace;
 }
 
 /* __________________________Card styles__________________________  */
@@ -551,15 +560,21 @@ a:link {
   width: 60%;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr) ) ;
+  padding: 80;
 }
 
 .wrapper {
   display: grid;
+  text-align: center;
   place-items: center;
-  margin-top: 60px;
+  padding: 40px;
+  margin-top: 80px;
+  margin-left: 15px;
+  background-color: lightgray;
 }
 
 .wrapper h1{
-  color: crimson;
+  color: dimgray;
   margin: 10px;
+  font-family: 'Inconsolata', monospace;
 }
