@@ -7,7 +7,7 @@ import { debounce } from '../utils';
 
 
 const getRandomIndex = () => Math.floor(Math.random() * Math.floor(700))
-const getRandomHeroUrl = () => `hero/${getRandomIndex()}`
+const getRandomHeroUrl = () => `/api/hero/${getRandomIndex()}`
 
 class Heroes extends React.Component {
 
@@ -24,9 +24,8 @@ class Heroes extends React.Component {
   }
 
   debouncedFetch = debounce(() => {
-    console.log('calling this')
     this.handleFeature()
-    let url = encode(`/superhero/${this.state.findHero.toLowerCase()}`)
+    let url = encode(`/api/superhero/${this.state.findHero.toLowerCase()}`)
     axios.get(url)
     .then(response => response && this.setState({ superHeros: response.data || [], searchFeatureDisappear: false }, () => this.getRandomHeroes()))
     .catch(err => {

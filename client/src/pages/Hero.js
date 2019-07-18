@@ -13,7 +13,7 @@ class Hero extends React.Component {
 
   componentDidMount(){
 
-    axios.get(`/hero/${this.props.match.params.id}`)
+    axios.get(`/api/hero/${this.props.match.params.id}`)
       .then(response => {
         this.setStorage(response.data)
         this.setState({
