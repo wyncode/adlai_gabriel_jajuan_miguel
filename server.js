@@ -3,6 +3,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 const express = require('express')
 const app = express()
+const path = require('path')
 const axios = require('axios')
 
 
@@ -19,5 +20,14 @@ app.get('/hero/:id', (request,response)=> {
   .then(hero => response.json(hero.data) || [])
   .catch(error => console.log("error", error))
 })
+
+if (process.env.NODE_ENV === 'production') {
+  // Serve any static files
+  app.use(express.static(path.join(__dirname, 'client/build')))
+  // Handle React routing, return all requests to React app
+  app.get('*', (request, response) => {
+    response.sendFile(path.join(__dirname, 'client/build', 'index.html'))
+  })
+}
 
 app.listen(process.env.PORT || 8080)
