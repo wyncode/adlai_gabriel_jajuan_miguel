@@ -28,7 +28,7 @@ class Heroes extends React.Component {
     this.handleFeature()
     let url = encode(`/superhero/${this.state.findHero.toLowerCase()}`)
     axios.get(url)
-    .then(response => response && this.setState({ superHeros: response.data, searchFeatureDisappear: false }, () => this.getRandomHeroes()))
+    .then(response => response && this.setState({ superHeros: response.data || [], searchFeatureDisappear: false }, () => this.getRandomHeroes()))
     .catch(err => {
       this.setState({superHeros: []})
     })
