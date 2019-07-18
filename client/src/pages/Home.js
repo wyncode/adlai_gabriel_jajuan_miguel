@@ -28,8 +28,12 @@ class Heroes extends React.Component {
     this.handleFeature()
     let url = encode(`/superhero/${this.state.findHero.toLowerCase()}`)
     axios.get(url)
-    .then(response => response && this.setState({ superHeros: response.data }))
+    .then(response => response && this.setState({ superHeros: response.data, searchFeatureDisappear: false }, () => this.getRandomHeroes()))
+    .catch(err => {
+      this.setState({superHeros: []})
+    })
   }, 500)
+
 
   handleFeature = event => {
     this.setState({searchFeatureDisappear: true})
@@ -62,39 +66,44 @@ class Heroes extends React.Component {
           <div className="container2">
             <div><h1 id="hometitle">Hero Data Base</h1></div>
           </div>
-          <div className="wrapper">
-            <div className="searchContainer">
+          {
+            this.state.superHeros.length > 0 ?
+              <div className="wrapper">
+                <div className="searchContainer">
+                {
+                  this.state.superHeros.map( (hero, index) => {
+                    return (
+                      <Link key={hero.id} to={`/hero/${hero.id}`}>
+                      <div>
+                      <h1>{hero.name}</h1>
+                      <img className='searchPics' height="100px" src={hero.image.url} alt={hero.name}></img>
+                      </div>
+                      </Link>
+                    )
+                  })
+                }
+                </div>
+              </div>
+              :
+              <div className="featuredPics">
               {
-                this.state.superHeros.map( (hero, index) => {
+                this.state.randomHeros.map( (hero, index) => {
                   return (
                     <Link key={hero.id} to={`/hero/${hero.id}`}>
-                      <div>
-                        <h1>{hero.name}</h1>
-                        <img className='searchPics' height="100px" src={hero.image.url} alt={hero.name}></img>
-                      </div>
+                    <div className="featuredContainer">
+                    <h1>{hero.name}</h1>
+                    <img className="featuredPic" src={hero.image && hero.image.url} alt={hero.name}></img>
+                    </div>
                     </Link>
                   )
                 })
               }
-            </div>
-          </div>
-          <div className={this.state.searchFeatureDisappear ? "disappear" : "featuredPics"}>
-            {
-              this.state.randomHeros.map( (hero, index) => {
-                return (
-                  <Link key={hero.id} to={`/hero/${hero.id}`}>
-                    <div className="featuredContainer">
-                      <h1>{hero.name}</h1>
-                      <img className="featuredPic" src={hero.image && hero.image.url} alt={hero.name}></img>
-                    </div>
-                  </Link>
-                )
-              })
-            }
-          </div>
+              </div>
+          }
         </div>
         <div className="container">
           <input
+
             type="text"
             value={this.state.findHero}
             onChange={this.handleChange}
