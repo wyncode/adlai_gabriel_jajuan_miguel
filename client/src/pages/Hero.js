@@ -5,7 +5,7 @@ import SelectedHeroes from './SelectedHero'
 
 class Hero extends React.Component {
   state = {
-    hero: [],
+    hero: {},
     loading: true,
     selectedHeroes: [],
 
