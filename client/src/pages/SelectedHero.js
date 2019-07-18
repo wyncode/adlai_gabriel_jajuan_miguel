@@ -38,7 +38,7 @@ let heros
 const SelectedHeroes = () => {
   let retrievedHeros = localStorage.getItem("hero")
   console.log(retrievedHeros);
-  heros = JSON.parse(retrievedHeros)
+  heros = JSON.parse(retrievedHeros) || []
   console.log('New list of heroes',heros)
   return (
     <>

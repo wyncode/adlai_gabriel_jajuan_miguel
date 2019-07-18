@@ -86,7 +86,6 @@ class Hero extends React.Component {
                 <div><h2>Strength: {hero.powerstats && hero.powerstats.strength}</h2></div>
               </div>
             </div>
-            <SelectedHeroes hero={this.state.selectedHeroes}/>
           </div>
         </div>
         <div className="txs0" >
