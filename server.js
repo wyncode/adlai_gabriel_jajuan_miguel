@@ -20,4 +20,4 @@ app.get('/hero/:id', (request,response)=> {
   .catch(error => console.log("error", error))
 })
 
-app.listen(8080)
+app.listen(process.env.PORT || 8080)
