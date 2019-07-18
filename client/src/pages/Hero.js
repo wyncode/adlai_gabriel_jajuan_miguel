@@ -1,16 +1,35 @@
 import React from 'react'
 import axios from 'axios'
 import '../index.css'
+import SelectedHeroes from './SelectedHero'
 
 class Hero extends React.Component {
   state = {
     hero: {},
     loading: true,
+    selectedHeroes: [],
+
   }
 
   componentDidMount(){
+
     axios.get(`/hero/${this.props.match.params.id}`)
-      .then(response => this.setState({ hero :response.data, loading: false}))
+      .then(response => {
+        this.setStorage(response.data)
+        this.setState({
+          hero: response.data,
+          loading: false,
+        })
+      }
+    )
+  }
+
+  setStorage = newHero => {
+      const retrievedHeros = JSON.parse(localStorage.getItem("hero")) || []
+      const newHeroesList = retrievedHeros.some(hero => hero.id === newHero.id)
+      ? retrievedHeros
+      : [...retrievedHeros, newHero]
+      localStorage.setItem('hero', JSON.stringify(newHeroesList) )
   }
 
   render(){
@@ -67,6 +86,7 @@ class Hero extends React.Component {
                 <div><h2>Strength: {hero.powerstats && hero.powerstats.strength}</h2></div>
               </div>
             </div>
+            <SelectedHeroes hero={this.state.selectedHeroes}/>
           </div>
         </div>
         <div className="txs0" >
