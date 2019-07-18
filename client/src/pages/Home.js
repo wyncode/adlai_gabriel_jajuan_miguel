@@ -26,11 +26,17 @@ class Heroes extends React.Component {
   debouncedFetch = debounce(() => {
     this.handleFeature()
     let url = encode(`/api/superhero/${this.state.findHero.toLowerCase()}`)
-    axios.get(url)
-    .then(response => response && this.setState({ superHeros: response.data || [], searchFeatureDisappear: false }, () => this.getRandomHeroes()))
-    .catch(err => {
+    if(this.state.findHero){
+      axios.get(url)
+      .then(response => {
+        this.setState({ superHeros: response.data || [], searchFeatureDisappear: false }, () => this.getRandomHeroes())
+      })
+      .catch(err => {
+        this.setState({superHeros: []})
+      })
+    }else{
       this.setState({superHeros: []})
-    })
+    }
   }, 500)
 
 
