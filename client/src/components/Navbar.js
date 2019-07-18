@@ -8,6 +8,7 @@ const Navbar = () => (
     <nav>
       <ul>
         <li><NavLink exact to="/">Home</NavLink></li>
+        <li><NavLink exact to="/">Selected Heros</NavLink></li>
       </ul>
     </nav>
     <section className="seperator-wrapper">
